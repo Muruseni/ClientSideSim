@@ -14,4 +14,3 @@ public class Quest
     public string ActionLabel => Completed ? "Reopen" : "Complete +25 XP";
 }
 public class PlayerProgress { public int Id { get; set; } public int TotalXp { get; set; } }
-
