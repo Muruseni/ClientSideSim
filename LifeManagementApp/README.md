@@ -4,9 +4,9 @@ Quest Life turns everyday to-dos into quests. Completing a quest earns XP and le
 
 ## Status and plan
 
-The current MAUI code is an **unverified prototype**, not a completed assignment. It targets .NET 8 and constructs pages in C#; the course requires .NET 9 / MAUI 9 and XAML. Home currently includes completed quests when fewer than three remain unfinished, contrary to the brief. Build, runtime, persistence, weather and UI have not been verified because the .NET SDK was unavailable when the prototype was created.
+The current MAUI code is an **unverified prototype**, not a completed assignment. It targets .NET 8 and constructs pages in C#; the course requires .NET 9 / MAUI 9 and XAML. Build, runtime, persistence, weather and UI have not been verified because the .NET SDK was unavailable when the prototype was created.
 
-The [GitHub issue backlog](https://github.com/Muruseni/ClientSideSim/issues) tracks the work. Priorities are: upgrade and build; implement XAML, Shell and CollectionView; correct unfinished top-three ordering and add editing; introduce interfaces and a category relationship; improve weather/error states; add compiled bindings, a converter and tests. Game styling and XP are extras and must not displace core requirements.
+The [GitHub issue backlog](https://github.com/Muruseni/ClientSideSim/issues) tracks the work. Priorities are: upgrade and build; implement XAML, Shell and CollectionView; add editing and complete quest management; introduce interfaces and a category relationship; improve weather/error states; add compiled bindings, a converter and tests. Game styling and XP are extras and must not displace core requirements.
 
 ## Required behavior
 
@@ -40,7 +40,7 @@ On Windows, install the .NET 8 SDK and MAUI workload to attempt the current prot
 
 ## Verification plan
 
-Build and launch on Windows. Check blank titles, both sort orders, only unfinished top-three items, persistence after restart, and XP awarded once on completion. Exercise weather loading, offline failure and the 5 m/s boundary. Run xUnit tests once added. Record actual results rather than marking planned checks as passed.
+Build and launch on Windows. Check blank titles, both sort orders, only unfinished top-three items, persistence after restart, and XP awarded once on completion. Exercise weather loading, offline failure and the 5 m/s boundary. Run the ordering tests with `dotnet test ../LifeManagementApp.Tests/LifeManagementApp.Tests.csproj`; add coverage for XP and weather. Record actual results rather than marking planned checks as passed.
 
 ## AI use and learning
 

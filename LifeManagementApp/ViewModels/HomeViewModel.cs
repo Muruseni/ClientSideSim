@@ -18,9 +18,11 @@ public partial class HomeViewModel(QuestService quests, WeatherService weather) 
         try
         {
             await quests.InitializeAsync();
-            var list = await quests.ListAsync(); TopQuests.Clear(); foreach (var quest in list.Take(3)) TopQuests.Add(quest);
+            var list = await quests.ListAsync();
+            var topQuests = QuestOrdering.TopUnfinished(list);
+            TopQuests.Clear(); foreach (var quest in topQuests) TopQuests.Add(quest);
             var xp = await quests.XpAsync(); Progress = $"Level {xp / 100 + 1}  ?  {xp % 100} / 100 XP"; ProgressValue = (xp % 100) / 100d;
-            Status = list.Count == 0 ? "No quests yet. Add one on the Quests tab!" : "";
+            Status = topQuests.Count == 0 ? "No active quests. Add or reopen one on the Quests tab!" : "";
         }
         catch (Exception) { Status = "Could not load quests. Please restart the app and try again."; }
     }

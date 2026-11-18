@@ -6,6 +6,11 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 /.vs/
-*.csproj
+/*.csproj
 *.sln
 *.user
+
+# Local .NET tools and build output
+.tools/
+**/bin/
+**/obj/
