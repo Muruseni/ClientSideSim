@@ -9,8 +9,6 @@ public class QuestService(IDbContextFactory<QuestDbContext> factory)
     {
         await using var db = await factory.CreateDbContextAsync();
         var quests = await db.Quests.AsNoTracking().ToListAsync();
-        // The current prototype puts unfinished first but does not filter completed items.
-        // Home must filter them before taking its top three (tracked in issue #4).
         var ordered = quests.OrderBy(q => q.Completed);
         return (byDate ? ordered.ThenBy(q => q.DueDate).ThenByDescending(q => q.Priority) : ordered.ThenByDescending(q => q.Priority).ThenBy(q => q.DueDate)).ToList();
     }
